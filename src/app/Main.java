@@ -1,9 +1,12 @@
 package app;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.commons.io.FileUtils;
 import org.slf4j.LoggerFactory;
 
 import ch.qos.logback.classic.Logger;
@@ -16,7 +19,40 @@ public class Main {
 
 	public static Logger logger = (Logger) LoggerFactory.getLogger(Main.class);
 
+	public static File file = new File("library.txt");
+
 	public static List<Script> library = new ArrayList<>();
+
+	//	public static void saveOnDisk() throws IOException {
+	//		FileUtils.write(file, "CIAO", "UTF-8", false);
+	//	}
+
+	public static void saveOnDisk() throws IOException {
+		String text = "";
+
+		for (Script script : library) {
+
+			if (script instanceof Book) {
+				text += script.toString();
+			} else if (script instanceof Magazine) {
+				text += script.toString();
+			}
+			text += ("*******************" + System.lineSeparator());
+		}
+
+		FileUtils.writeStringToFile(file, text, "UTF-8");
+		logger.info("File e dati salvati");
+	}
+
+	public static String readFileFromDisk() throws IOException {
+		if (file.exists()) {
+			String content = FileUtils.readFileToString(file, "UTF-8");
+			return content;
+		} else {
+			logger.info("File non trovato!");
+			return "";
+		}
+	}
 
 	public static void addScript(Script nameScript) {
 		library.add(nameScript);
@@ -25,11 +61,8 @@ public class Main {
 	public static void searchFromYear(int publicationYear) {
 		for (Script script : library) {
 			if (script.getPublicationYear() == publicationYear) {
-				logger.info("\nRICERCA PER " + publicationYear + ": {}", script.toString());
+				logger.info(System.lineSeparator() + "RICERCA PER " + publicationYear + " {}", script.toString());
 			}
-			//else {
-			//	logger.info("Nessuna pubblicazione trovata per l'anno " + publicationYear);
-			//}
 		}
 	}
 
@@ -40,14 +73,14 @@ public class Main {
 	public static void searchFromISBN(long ISBN) {
 		List<Script> ISBNSearched = library.stream().filter(publication -> (publication).getISBN() == ISBN)
 				.collect(Collectors.toList());
-		logger.info("RICERCA PER " + ISBN + ": {}", ISBNSearched.toString());
+		logger.info(System.lineSeparator() + "RICERCA PER " + ISBN + ": {}", ISBNSearched.toString());
 	}
 
 	public static void searchFromAuthor(String author) {
 		List<Book> authorSearched = library.stream()
 				.filter(book -> book instanceof Book && ((Book) book).getAuthor().equals(author)).map(p -> (Book) p)
 				.collect(Collectors.toList());
-		logger.info("RICERCA PER " + author + ": {}", authorSearched.toString());
+		logger.info(System.lineSeparator() + "RICERCA PER: " + author + " {}", authorSearched.toString());
 	}
 
 	public static void main(String[] args) {
@@ -74,7 +107,7 @@ public class Main {
 		Magazine magazine6 = new Magazine(9024720354169l, "ArtApp", 2009, 145, MagazineType.HALFYEARLY);
 
 		// ********** *********** **********
-		// ******  AGGIUNTA ELEMENTI  ****** => FUNZIONA
+		// ******  AGGIUNTA ELEMENTI  ******
 		// ********** *********** **********
 		addScript(book1);
 		addScript(book2);
@@ -91,29 +124,43 @@ public class Main {
 		addScript(magazine6);
 
 		// ********** ************ **********
-		// *******  RICERCA PER ANNO  ******* => FUNZIONA
+		// *******  RICERCA PER ANNO  *******
 		// ********** ************ **********
 		searchFromYear(2023); //=> Yellow diamonds / L'impostore
 
 		// ********** ************ **********
-		// ******  RICERCA PER AUTORE  ****** => FUNZIONA
+		// ******  RICERCA PER AUTORE  ******
 		// ********** ************ **********
 		searchFromAuthor("Stephen King");
 
 		// ********** ************* **********
-		// ********  RIMUOVI DA ISBN  ******** => FUNZIONA
+		// ********  RIMUOVI DA ISBN  ********
 		// ********** ************* **********
 		deleteFromISBN(9933329444449l); //=> Scienza & Politica
 
-		// ********** ************* **********
-		// ********  RICERCA DA ISBN  ******** => FUNZIONA
-		// ********** ************* **********
+		// ********** ************ **********
+		// *******  RICERCA PER ISBN  *******
+		// ********** ************ **********
 		searchFromISBN(9928892704704l); //=> National Geographic
 
 		// ********** ************ ***********
 		// *******  SALVATAGGIO IN HD  *******
 		// ********** ************* **********
+		try {
+			saveOnDisk();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
+		// ********** ************ ***********
+		// *******  CARICAMENTO DA HD  *******
+		// ********** ************* **********
+		try {
+			logger.info(System.lineSeparator());
+			logger.info(System.lineSeparator() + "ECCO IL CONTENUTO DEL FILE: " + readFileFromDisk());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

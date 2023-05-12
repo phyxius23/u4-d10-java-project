@@ -19,4 +19,11 @@ public class Magazine extends Script {
 	public void setPeriodicity(MagazineType periodicity) {
 		this.periodicity = periodicity;
 	}
+
+	@Override
+	public String toString() {
+		return System.lineSeparator() + "Titolo: " + getTitle() + System.lineSeparator() + "Periodicità: "
+				+ getPeriodicity() + System.lineSeparator() + "Year: " + getPublicationYear() + System.lineSeparator()
+				+ "Pagine: " + getNumberOfPages() + System.lineSeparator() + "ISBN: " + getISBN() + System.lineSeparator();
+	}
 }

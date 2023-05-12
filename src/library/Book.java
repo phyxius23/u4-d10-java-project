@@ -29,4 +29,12 @@ public class Book extends Script {
 	public void setLiteraryGenre(String literaryGenre) {
 		this.literaryGenre = literaryGenre;
 	}
+
+	@Override
+	public String toString() {
+		return System.lineSeparator() + "Titolo: " + getTitle() + System.lineSeparator() + "Autore: " + getAuthor()
+				+ System.lineSeparator() + "Genere: " + getLiteraryGenre() + System.lineSeparator() + "Year: "
+				+ getPublicationYear() + System.lineSeparator() + "Pagine: " + getNumberOfPages() + System.lineSeparator()
+				+ "ISBN: " + getISBN() + System.lineSeparator();
+	}
 }

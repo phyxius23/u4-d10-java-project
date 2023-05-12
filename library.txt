@@ -1,0 +1,83 @@
+
+Titolo: Yellow diamonds
+Autore: Paolo Roversi
+Genere: Thriller
+Year: 2023
+Pagine: 336
+ISBN: 9788893904704
+*******************
+
+Titolo: L'impostore
+Autore: Martin Griffin
+Genere: Thriller
+Year: 2023
+Pagine: 288
+ISBN: 9788809968950
+*******************
+
+Titolo: La setta
+Autore: Camilla Läckberg
+Genere: Giallo
+Year: 2022
+Pagine: 768
+ISBN: 9788829710348
+*******************
+
+Titolo: La caccia
+Autore: Will Dean
+Genere: Giallo
+Year: 2022
+Pagine: 384
+ISBN: 9788829713554
+*******************
+
+Titolo: Fairy Tale
+Autore: Stephen King
+Genere: Horror
+Year: 2022
+Pagine: 677
+ISBN: 9788820074449
+*******************
+
+Titolo: Black phone. Mai parlare con gli sconosciuti
+Autore: Joe Hill
+Genere: Horror
+Year: 2022
+Pagine: 393
+ISBN: 9788820073169
+*******************
+
+Titolo: National Geographic
+Periodicità: MONTHLY
+Year: 1888
+Pagine: 110
+ISBN: 9928892704704
+*******************
+
+Titolo: Settimana Enigmistica
+Periodicità: WEEKLY
+Year: 1932
+Pagine: 60
+ISBN: 9578802468950
+*******************
+
+Titolo: Focus
+Periodicità: MONTHLY
+Year: 1992
+Pagine: 105
+ISBN: 9926329710394
+*******************
+
+Titolo: Panorama
+Periodicità: WEEKLY
+Year: 1962
+Pagine: 85
+ISBN: 9629429713554
+*******************
+
+Titolo: ArtApp
+Periodicità: HALFYEARLY
+Year: 2009
+Pagine: 145
+ISBN: 9024720354169
+*******************

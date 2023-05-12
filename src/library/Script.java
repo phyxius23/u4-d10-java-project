@@ -54,8 +54,8 @@ public abstract class Script {
 
 	@Override
 	public String toString() {
-		return "\nTitolo: " + getTitle() + "\nYear: " + getPublicationYear() + "\nPagine: " + getNumberOfPages()
-				+ "\nISBN: " + getISBN() + "\n";
+		return System.lineSeparator() + "Titolo: " + getTitle() + System.lineSeparator() + "Year: " + getPublicationYear()
+				+ System.lineSeparator() + "Pagine: " + getNumberOfPages() + System.lineSeparator() + "ISBN: " + getISBN()
+				+ System.lineSeparator();
 	}
-
 }
