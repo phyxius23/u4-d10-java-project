@@ -49,4 +49,13 @@ public abstract class Script {
 		this.numberOfPages = numberOfPages;
 	}
 
+	public void addScript(Script nameScript) {
+	};
+
+	@Override
+	public String toString() {
+		return "\nTitolo: " + getTitle() + "\nYear: " + getPublicationYear() + "\nPagine: " + getNumberOfPages()
+				+ "\nISBN: " + getISBN() + "\n";
+	}
+
 }
